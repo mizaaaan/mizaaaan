@@ -1,0 +1,263 @@
+/* ───────────────────────────────────────────
+   LOADING SCREEN
+─────────────────────────────────────────── */
+(function(){
+  const screen = document.getElementById('loading-screen');
+  const counter = document.getElementById('loading-counter');
+  const bar = document.getElementById('loading-bar');
+  const wordEl = document.getElementById('loading-word');
+  const words = ['Design','Create','Inspire'];
+  let wordIdx = 0, count = 0;
+  const duration = 2700, start = performance.now();
+
+  function cycleWord(){
+    wordEl.classList.add('exit');
+    setTimeout(() => {
+      wordIdx = (wordIdx + 1) % words.length;
+      wordEl.textContent = words[wordIdx];
+      wordEl.classList.remove('exit');
+      wordEl.classList.add('enter');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => wordEl.classList.remove('enter'));
+      });
+    }, 300);
+  }
+  const wordInterval = setInterval(cycleWord, 900);
+
+  function tick(now){
+    const elapsed = now - start;
+    count = Math.min(100, Math.floor((elapsed / duration) * 100));
+    counter.textContent = String(count).padStart(3,'0');
+    bar.style.transform = `scaleX(${count/100})`;
+    if(count < 100){
+      requestAnimationFrame(tick);
+    } else {
+      clearInterval(wordInterval);
+      setTimeout(() => {
+        screen.classList.add('hide');
+        setTimeout(() => { screen.style.display='none'; initPage(); }, 600);
+      }, 400);
+    }
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ───────────────────────────────────────────
+   INIT after loading
+─────────────────────────────────────────── */
+function initPage(){
+  initVideo();
+  initGSAP();
+  initRoles();
+  initMarquee();
+  initScrollReveal();
+  initLightbox();
+  initNavScroll();
+  initNavLinks();
+  initThemeToggle();
+}
+
+/* ───────────────────────────────────────────
+   HLS VIDEO
+─────────────────────────────────────────── */
+function loadHLS(videoEl, src){
+  if(typeof Hls !== 'undefined' && Hls.isSupported()){
+    const hls = new Hls();
+    hls.loadSource(src);
+    hls.attachMedia(videoEl);
+  } else if(videoEl.canPlayType('application/vnd.apple.mpegurl')){
+    videoEl.src = src;
+  }
+  videoEl.play().catch(()=>{});
+}
+function initVideo(){
+  const src = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
+  loadHLS(document.getElementById('hero-video'), src);
+  loadHLS(document.getElementById('footer-video'), src);
+}
+
+/* ───────────────────────────────────────────
+   GSAP HERO ENTRANCE
+─────────────────────────────────────────── */
+function initGSAP(){
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+  tl.to('.name-reveal', { opacity:1, y:0, duration:1.2, delay:0.1,
+      from:{ opacity:0, y:50 }
+    })
+    .from('.blur-in', {
+      opacity:0, filter:'blur(10px)', y:20, duration:1,
+      stagger:0.1
+    }, '-=0.8');
+
+  // Simultaneously animate hero-btns
+  gsap.from('.hero-btns', { opacity:0, y:20, duration:0.8, delay:1.2, ease:'power3.out' });
+
+  // Exploration parallax
+  const items = document.querySelectorAll('.explore-item');
+  if(items.length){
+    const col1 = [items[0], items[2], items[4]];
+    const col2 = [items[1], items[3], items[5]];
+    col1.forEach(el => {
+      gsap.to(el, {
+        y: -120, ease:'none',
+        scrollTrigger:{ trigger:'#explorations', start:'top bottom', end:'bottom top', scrub:1 }
+      });
+    });
+    col2.forEach(el => {
+      gsap.to(el, {
+        y: 120, ease:'none',
+        scrollTrigger:{ trigger:'#explorations', start:'top bottom', end:'bottom top', scrub:1 }
+      });
+    });
+
+    // Pin center content
+    ScrollTrigger.create({
+      trigger:'#explorations',
+      start:'top top',
+      end:'bottom bottom',
+      pin:'#explore-pin',
+      pinSpacing:false
+    });
+  }
+}
+
+/* ───────────────────────────────────────────
+   HERO — Role cycling
+─────────────────────────────────────────── */
+function initRoles(){
+  const roles = ['Creative','Designer','Founder','Graduate'];
+  let idx = 0;
+  const el = document.getElementById('role-word');
+  setInterval(() => {
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    idx = (idx+1) % roles.length;
+    el.textContent = roles[idx];
+    el.style.animation = 'roleFadeIn 0.4s ease-out';
+  }, 2000);
+}
+
+/* ───────────────────────────────────────────
+   MARQUEE
+─────────────────────────────────────────── */
+function initMarquee(){
+  const track = document.getElementById('marquee-track');
+  const text = 'BUILDING THE FUTURE • ';
+  for(let i=0;i<12;i++){
+    const span = document.createElement('span');
+    span.className = 'marquee-text';
+    span.textContent = text;
+    track.appendChild(span);
+  }
+  gsap.to(track, {
+    xPercent: -50, duration:40,
+    ease:'none', repeat:-1
+  });
+}
+
+/* ───────────────────────────────────────────
+   SCROLL REVEAL (IntersectionObserver)
+─────────────────────────────────────────── */
+function initScrollReveal(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin:'-80px', threshold:0.1 });
+  els.forEach(el => obs.observe(el));
+}
+
+/* ───────────────────────────────────────────
+   LIGHTBOX
+─────────────────────────────────────────── */
+function initLightbox(){
+  document.querySelectorAll('.explore-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const src = item.dataset.img;
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('open');
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target === this) closeLightbox();
+  });
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+/* ───────────────────────────────────────────
+   NAV SCROLL SHADOW
+─────────────────────────────────────────── */
+function initNavScroll(){
+  const pill = document.getElementById('nav-pill');
+  window.addEventListener('scroll', () => {
+    pill.classList.toggle('scrolled', window.scrollY > 100);
+  }, { passive:true });
+}
+
+/* ───────────────────────────────────────────
+   NAV ACTIVE LINKS (smooth scroll)
+─────────────────────────────────────────── */
+function initNavLinks(){
+  const links = document.querySelectorAll('.nav-link');
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = link.getAttribute('href');
+      if(target && target.startsWith('#')){
+        document.querySelector(target)?.scrollIntoView({ behavior:'smooth' });
+      }
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  // Update active on scroll
+  const sections = ['hero','works','journal','explorations','stats','contact'];
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = e.target.id;
+        links.forEach(l => {
+          const href = l.getAttribute('href');
+          l.classList.toggle('active',
+            href === '#'+id ||
+            (id === 'journal' && href === '#works') ||
+            (id === 'explorations' && href === '#works')
+          );
+        });
+      }
+    });
+  }, { threshold:0.4 });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) obs.observe(el);
+  });
+}
+
+function initThemeToggle(){
+  const toggle = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+  const setTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('theme', theme);
+  };
+
+  setTheme(initialTheme);
+  toggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    setTheme(nextTheme);
+  });
+}
