@@ -23,6 +23,14 @@
     --font-display: 'Instrument Serif', serif;
   }
 
+  [data-theme='light'] {
+    --bg: hsl(220, 11%, 98%);
+    --surface: hsl(220, 14%, 100%);
+    --text: hsl(217, 12%, 16%);
+    --muted: hsl(215, 16%, 55%);
+    --stroke: hsl(220, 16%, 90%);
+  }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
@@ -114,6 +122,7 @@
     transition: transform 0.3s ease;
     background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
     padding: 2px;
+    appearance: none; border: none; color: inherit; font: inherit;
   }
   .nav-logo:hover { transform: scale(1.1); }
   .nav-logo-inner {
@@ -263,22 +272,25 @@
   /* Scroll indicator */
   .scroll-indicator {
     position: absolute; bottom: 2.5rem; left: 50%;
-    transform: translateX(-50%); z-index: 10;
+    transform: translateX(-50%); z-index: 20;
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
   }
   .scroll-label {
     font-size: 0.65rem; text-transform: uppercase;
-    letter-spacing: 0.2em; color: var(--muted);
+    letter-spacing: 0.2em; color: var(--text);
+    text-shadow: 0 0 12px rgba(0,0,0,0.25);
   }
   .scroll-line {
-    width: 1px; height: 2.5rem; background: var(--stroke);
+    width: 2px; height: 3rem; background: var(--text);
     position: relative; overflow: hidden;
+    border-radius: 9999px;
   }
   .scroll-line::after {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 40%;
     background: linear-gradient(to bottom, transparent, var(--accent-a));
     animation: scrollDown 1.5s ease-in-out infinite;
+    border-radius: 9999px;
   }
   @keyframes scrollDown {
     0% { transform: translateY(-100%); }
@@ -644,9 +656,9 @@
 <!-- Navbar -->
 <nav id="navbar">
   <div class="nav-pill" id="nav-pill">
-    <div class="nav-logo" title="MR">
+    <button class="nav-logo" id="theme-toggle" title="Toggle theme" aria-label="Toggle light/dark mode">
       <div class="nav-logo-inner">MR</div>
-    </div>
+    </button>
     <div class="nav-divider"></div>
     <a class="nav-link active" href="#hero">Home</a>
     <a class="nav-link" href="#works">Work</a>
@@ -947,6 +959,7 @@
     initLightbox();
     initNavScroll();
     initNavLinks();
+    initThemeToggle();
   }
 
   /* ───────────────────────────────────────────
@@ -1133,6 +1146,24 @@
     sections.forEach(id => {
       const el = document.getElementById(id);
       if(el) obs.observe(el);
+    });
+  }
+
+  function initThemeToggle(){
+    const toggle = document.getElementById('theme-toggle');
+    const storedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+    const setTheme = (theme) => {
+      document.documentElement.dataset.theme = theme;
+      localStorage.setItem('theme', theme);
+    };
+
+    setTheme(initialTheme);
+    toggle.addEventListener('click', () => {
+      const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+      setTheme(nextTheme);
     });
   }
 </script>
