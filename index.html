@@ -116,6 +116,70 @@
   </div>
 </section>
 
+<!-- ❤️❤️❤️ FIFA World Cup 2026 Live Player Start -->
+<div class="wc-live-wrapper" style="max-width: 850px; margin: 20px auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0d0e12; color: #ffffff; padding: 20px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.6); border: 1px solid #1f222e; text-align: center;">
+    
+    <!-- Header Section -->
+    <div style="margin-bottom: 20px;">
+        <span style="background: #e91e63; color: #fff; padding: 5px 12px; font-size: 12px; font-weight: bold; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 10px; animation: pulse 2s infinite;">🔴 LIVE</span>
+        <h2 style="margin: 0 0 8px 0; color: #00ffcc; font-size: 26px; font-weight: 700;">🏆 ফিফা ফুটবল বিশ্বকাপ ২০২৬ লাইভ দেখুন এখানে 🏆</h2>
+        <p style="margin: 0; color: #a0a5b5; font-size: 15px;">হাই-কোয়ালিটি স্মুথ স্ট্রিমিংয়ে উপভোগ করুন আজকের হাই-ভোল্টেজ ম্যাচ</p>
+    </div>
+
+    <!-- Video Player Container (16:9 Aspect Ratio) -->
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000; box-shadow: inset 0 0 20px rgba(0,0,0,0.8);">
+        <video id="fifa-live-player" controls autoplay muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></video>
+    </div>
+
+    <!-- Footer / Features Note -->
+    <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; font-size: 13px; color: #767d93;">
+        <span>⚡ লো-বাফারিং</span>
+        <span>•</span>
+        <span>📺 ফুল এইচডি (HD)</span>
+        <span>•</span>
+        <span>📱 মোবাইল ফ্রেন্ডলি</span>
+    </div>
+
+    <!-- HLS Stream Script -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var video = document.getElementById('fifa-live-player');
+            var videoSrc = 'https://premierleagpl23.akamaized.net/hls/live/2107108/tapmad-P2s6L_FiN@L-UrU/level_0.m3u8';
+            
+            if (Hls.isSupported()) {
+                var hls = new Hls({
+                    maxMaxBufferLength: 10 // বাফারিং কমানোর জন্য অপটিমাইজেশন
+                });
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    video.play().catch(function(e) {
+                        console.log("Autoplay prevented, user interaction needed.");
+                    });
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // Safari বা iOS ডিভাইসের জন্য নেটিভ সাপোর্ট
+                video.src = videoSrc;
+                video.addEventListener('loadedmetadata', function() {
+                    video.play();
+                });
+            }
+        });
+    </script>
+
+    <!-- CSS Animation for Live Tag -->
+    <style>
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(233, 30, 99, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(233, 30, 99, 0); }
+        }
+    </style>
+</div>
+<!-- ❤️❤️❤️ FIFA World Cup 2026 Live Player End -->
+
+
 <!-- Journal -->
 <section id="journal" style="background:var(--bg); padding: 3rem 0;">
   <div class="section-wrap">
