@@ -39,7 +39,7 @@ export default function Services() {
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
-    <section className="py-32 relative">
+    <section id="services" className="py-32 relative">
       <div className="max-w-4xl mx-auto px-6 sm:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

@@ -2,7 +2,12 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 
 const menuLinks = ['About', 'Work', 'Services', 'Contact'];
-const socialLinks = ['Instagram', 'LinkedIn', 'Twitter', 'Dribbble'];
+const socialLinks = [
+  { name: 'Instagram', href: '#' },
+  { name: 'LinkedIn', href: '#' },
+  { name: 'Twitter', href: '#' },
+  { name: 'Dribbble', href: '#' },
+];
 
 export default function Footer() {
   return (
@@ -71,19 +76,20 @@ export default function Footer() {
             <div>
               <p className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">
                 Socials
-              </p>
-              <ul className="space-y-4">
-                {socialLinks.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:text-[#00df8f] transition-colors duration-300"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              </p>              <ul className="space-y-4">
+              {socialLinks.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-[#00df8f] transition-colors duration-300"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
             </div>
           </motion.div>
         </div>

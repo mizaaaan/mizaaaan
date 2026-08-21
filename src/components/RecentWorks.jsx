@@ -66,7 +66,10 @@ export default function RecentWorks() {
               RECENT WORKS
             </h2>
           </div>
-          <button className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-sm font-semibold text-gray-300 uppercase tracking-widest hover:border-[#00df8f] hover:text-[#00df8f] transition-colors duration-300">
+          <button
+            onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+            className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-sm font-semibold text-gray-300 uppercase tracking-widest hover:border-[#00df8f] hover:text-[#00df8f] transition-colors duration-300"
+          >
             View All Projects
             <ArrowUpRight size={16} />
           </button>
@@ -163,6 +166,7 @@ export default function RecentWorks() {
                 <motion.button
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className="flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] text-[#0d1116] font-semibold text-sm"
                 >
                   Explore Project
