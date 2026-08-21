@@ -55,14 +55,14 @@ export default function RecentWorks() {
   const active = projects[activeIdx];
 
   return (
-    <section id="work" className="py-32 relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+    <section id="work" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10">
         <div className="flex items-center justify-between mb-16">
           <div>
             <span className="text-sm font-semibold text-[#00df8f] uppercase tracking-widest">
               Selected Work
             </span>
-            <h2 className="font-display font-bold tracking-tighter leading-[0.95] text-4xl sm:text-5xl md:text-6xl mt-4 text-white">
+            <h2 className="font-display font-bold tracking-tighter leading-[0.95] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 text-white">
               RECENT WORKS
             </h2>
           </div>
@@ -79,7 +79,7 @@ export default function RecentWorks() {
           {/* Stack */}
           <div className="lg:col-span-7">
             <div
-              className="relative h-[340px] sm:h-[450px] md:h-[480px]"
+              className="relative h-[280px] sm:h-[380px] md:h-[450px] lg:h-[480px]"
               style={{ perspective: 1200 }}
             >
               {projects.map((project, idx) => {
@@ -135,7 +135,7 @@ export default function RecentWorks() {
           </div>
 
           {/* Description panel */}
-          <div className="lg:col-span-5 flex items-start">
+          <div className="lg:col-span-5 flex items-start lg:pt-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active.title}
@@ -147,7 +147,7 @@ export default function RecentWorks() {
                 <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">
                   {active.category}
                 </span>
-                <h3 className="font-display font-bold text-3xl sm:text-4xl text-white mt-3 mb-5">
+                <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-white mt-3 mb-4 sm:mb-5">
                   {active.title}
                 </h3>
                 <p className="text-gray-400 leading-relaxed mb-6">

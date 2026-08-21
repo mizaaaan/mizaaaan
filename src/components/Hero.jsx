@@ -8,7 +8,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center pt-24 grid-bg">
+    <section className="relative min-h-screen overflow-hidden flex items-center pt-20 sm:pt-24 grid-bg">
       {/* Giant background typography */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
         <span className="font-display font-bold text-[20vw] leading-none text-white opacity-[0.02] whitespace-nowrap">
@@ -16,39 +16,39 @@ export default function Hero() {
         </span>
       </div>
 
-      <div className="relative max-w-7xl mx-auto w-full px-6 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative max-w-7xl mx-auto w-full px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
         {/* Left column */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
         >
-          <div className="flex items-center gap-2 mb-6">
+          <div className="flex items-center gap-2 mb-4 sm:mb-6">
             <span className="w-2 h-2 rounded-full bg-[#00df8f]" />
-            <span className="text-sm font-semibold text-gray-400 uppercase tracking-widest">
+            <span className="text-xs sm:text-sm font-semibold text-gray-400 uppercase tracking-widest">
               UX/UI Designer
             </span>
           </div>
 
-          <h1 className="font-display font-bold tracking-tighter leading-[0.9] text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl mb-8">
+          <h1 className="font-display font-bold tracking-tighter leading-[0.9] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 sm:mb-8">
             <span className="text-white">DIGITAL</span>
             <br />
             <span className="text-stroke">EXPERIENCES</span>
             <span className="text-[#00df8f]">.</span>
           </h1>
 
-          <p className="text-gray-400 leading-relaxed max-w-md mb-10 text-base sm:text-lg">
+          <p className="text-gray-400 leading-relaxed max-w-md mb-8 sm:mb-10 text-sm sm:text-base md:text-lg">
             I craft interfaces that feel inevitable — where clarity, motion,
             and intention meet. Every pixel is a decision, every interaction
             a small piece of trust earned.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => scrollTo('work')}
-              className="flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] text-[#0d1116] font-semibold text-sm"
+              className="flex items-center gap-2 pl-5 sm:pl-6 pr-2 py-2 rounded-full bg-gradient-to-r from-[#00df8f] to-[#00b373] text-[#0d1116] font-semibold text-sm"
             >
               View My Work
               <span className="w-8 h-8 rounded-full bg-[#0d1116] flex items-center justify-center">
@@ -60,7 +60,7 @@ export default function Hero() {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => scrollTo('contact')}
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#14181f] border border-white/15 text-white font-semibold text-sm"
+              className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#14181f] border border-white/15 text-white font-semibold text-sm"
             >
               <span className="w-2 h-2 rounded-full bg-[#00df8f]" />
               Contact Me
@@ -68,7 +68,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right column - Interactive ID card */}
+        {/* Right column - Interactive ID card (hidden on small screens) */}
         <div className="relative hidden lg:flex items-center justify-center h-[560px]">
           <motion.div
             className="absolute top-0 w-1.5 h-40 bg-gradient-to-b from-white/0 via-white/20 to-white/40 rounded-full origin-top"

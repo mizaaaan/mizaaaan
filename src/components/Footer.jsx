@@ -13,15 +13,15 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative pt-32 pb-10 border-t border-white/10 overflow-hidden"
+      className="relative pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-10 border-t border-white/10 overflow-hidden"
     >
-      <div className="absolute inset-x-0 bottom-0 flex justify-center pointer-events-none select-none">
-        <span className="font-display font-bold text-[25vw] leading-none text-white opacity-[0.05] whitespace-nowrap translate-y-1/3">
+      <div className="absolute inset-x-0 bottom-0 flex justify-center pointer-events-none select-none overflow-hidden">
+        <span className="font-display font-bold text-[22vw] sm:text-[20vw] leading-none text-white opacity-[0.05] whitespace-nowrap translate-y-1/3">
           CONTACT
         </span>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10">
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -29,7 +29,7 @@ export default function Footer() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
           >
-            <h2 className="font-display font-bold tracking-tighter text-4xl sm:text-5xl md:text-6xl text-white mb-6 leading-[0.95]">
+            <h2 className="font-display font-bold tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-5 sm:mb-6 leading-[0.95]">
               HOW CAN I HELP?
             </h2>
             <p className="text-gray-400 leading-relaxed max-w-md mb-10">
@@ -40,10 +40,10 @@ export default function Footer() {
               href="mailto:hello@mizan.design"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-[#0d1116] font-semibold text-sm"
+              className="inline-flex items-center gap-2 pl-5 sm:pl-6 pr-2 py-2 rounded-full bg-white text-[#0d1116] font-semibold text-xs sm:text-sm break-all sm:break-normal"
             >
               hello@mizan.design
-              <span className="w-8 h-8 rounded-full bg-[#0d1116] flex items-center justify-center">
+              <span className="w-8 h-8 rounded-full bg-[#0d1116] flex items-center justify-center flex-shrink-0">
                 <ArrowUpRight size={16} className="text-white" />
               </span>
             </motion.a>
@@ -94,7 +94,7 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-white/10">
           <p className="text-sm text-gray-500">
             © 2026 Mizan Portfolio. All rights reserved.
           </p>

@@ -13,8 +13,8 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="py-32 relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <section id="about" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16">
         {/* Left column */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -25,7 +25,7 @@ export default function About() {
           <span className="text-sm font-semibold text-[#00df8f] uppercase tracking-widest">
             About
           </span>
-          <h2 className="font-display font-bold tracking-tighter leading-[0.95] text-4xl sm:text-5xl md:text-6xl mt-4 mb-8 text-white">
+          <h2 className="font-display font-bold tracking-tighter leading-[0.95] text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-4 mb-6 sm:mb-8 text-white">
             DESIGNING WITH PURPOSE.
           </h2>
 
@@ -45,16 +45,16 @@ export default function About() {
             </p>
           </div>
 
-          <div className="flex items-center gap-8 mt-12">
+          <div className="flex items-center gap-6 sm:gap-8 mt-8 sm:mt-12">
             <div>
-              <p className="font-display font-bold text-4xl text-white">20+</p>
+              <p className="font-display font-bold text-3xl sm:text-4xl text-white">20+</p>
               <p className="text-sm text-gray-500 uppercase tracking-widest mt-1">
                 Awards
               </p>
             </div>
             <div className="w-px h-12 bg-white/10" />
             <div>
-              <p className="font-display font-bold text-4xl text-white">100%</p>
+              <p className="font-display font-bold text-3xl sm:text-4xl text-white">100%</p>
               <p className="text-sm text-gray-500 uppercase tracking-widest mt-1">
                 Commitment
               </p>
@@ -68,7 +68,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1], delay: 0.15 }}
-          className="rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 p-8 sm:p-10 h-fit"
+          className="rounded-2xl sm:rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 p-6 sm:p-8 md:p-10 h-fit"
         >
           <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">
             My Toolkit

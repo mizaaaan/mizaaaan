@@ -39,14 +39,14 @@ export default function Services() {
   const [openIdx, setOpenIdx] = useState(0);
 
   return (
-    <section id="services" className="py-32 relative">
-      <div className="max-w-4xl mx-auto px-6 sm:px-10">
+    <section id="services" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="max-w-4xl mx-auto px-5 sm:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="font-display font-bold tracking-tighter text-4xl sm:text-5xl md:text-6xl text-center mb-20 leading-[0.95]"
+          className="font-display font-bold tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center mb-12 sm:mb-16 md:mb-20 leading-[0.95]"
         >
           <span className="text-white">STAGES OF WEBSITE </span>
           <span className="text-stroke">DEVELOPMENT</span>
@@ -66,21 +66,21 @@ export default function Services() {
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? -1 : idx)}
-                  className="w-full flex items-center justify-between py-8 text-left group"
+                  className="w-full flex items-center justify-between py-5 sm:py-6 md:py-8 text-left group"
                 >
-                  <div className="flex items-center gap-6 sm:gap-10">
-                    <span className="text-sm font-semibold text-gray-500 tabular-nums">
+                  <div className="flex items-center gap-4 sm:gap-6 md:gap-10">
+                    <span className="text-xs sm:text-sm font-semibold text-gray-500 tabular-nums">
                       {stage.number}
                     </span>
                     <span
-                      className={`font-display font-bold text-2xl sm:text-4xl tracking-tight transition-colors duration-300 ${
+                      className={`font-display font-bold text-lg sm:text-2xl md:text-3xl lg:text-4xl tracking-tight transition-colors duration-300 ${
                         isOpen ? 'text-[#00df8f]' : 'text-white group-hover:text-gray-300'
                       }`}
                     >
                       {stage.title}
                     </span>
                   </div>
-                  <span className="flex-shrink-0 w-10 h-10 rounded-full border border-white/15 flex items-center justify-center">
+                  <span className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/15 flex items-center justify-center">
                     {isOpen ? (
                       <Minus size={16} className="text-[#00df8f]" />
                     ) : (
@@ -98,7 +98,7 @@ export default function Services() {
                       transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 leading-relaxed pb-8 max-w-2xl pl-0 sm:pl-16">
+                      <p className="text-sm sm:text-base text-gray-400 leading-relaxed pb-5 sm:pb-6 md:pb-8 max-w-2xl pl-0 sm:pl-10 md:pl-16">
                         {stage.text}
                       </p>
                     </motion.div>
