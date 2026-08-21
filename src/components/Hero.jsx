@@ -30,7 +30,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display font-bold tracking-tighter leading-[0.9] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 sm:mb-8">
+          <h1 className="font-display font-bold tracking-tighter leading-[0.9] text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-5 sm:mb-8">
             <span className="text-white">DIGITAL</span>
             <br />
             <span className="text-stroke">EXPERIENCES</span>
@@ -43,7 +43,7 @@ export default function Hero() {
             a small piece of trust earned.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <motion.button
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}

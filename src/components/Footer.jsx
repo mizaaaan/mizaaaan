@@ -22,7 +22,7 @@ export default function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16 mb-16 sm:mb-20 lg:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,8 +31,7 @@ export default function Footer() {
           >
             <h2 className="font-display font-bold tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-5 sm:mb-6 leading-[0.95]">
               HOW CAN I HELP?
-            </h2>
-            <p className="text-gray-400 leading-relaxed max-w-md mb-10">
+            </h2>              <p className="text-gray-400 leading-relaxed max-w-md mb-8 sm:mb-10">
               Have a project in mind, or just want to talk design? My inbox
               is always open — I read every message myself.
             </p>
@@ -54,7 +53,7 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1], delay: 0.15 }}
-            className="grid grid-cols-2 gap-8"
+            className="grid grid-cols-2 gap-6 sm:gap-8"
           >
             <div>
               <p className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-6">

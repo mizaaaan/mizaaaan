@@ -46,7 +46,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="font-display font-bold tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center mb-12 sm:mb-16 md:mb-20 leading-[0.95]"
+          className="font-display font-bold tracking-tighter text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center mb-10 sm:mb-14 md:mb-20 leading-[0.95]"
         >
           <span className="text-white">STAGES OF WEBSITE </span>
           <span className="text-stroke">DEVELOPMENT</span>

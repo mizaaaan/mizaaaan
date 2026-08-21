@@ -75,7 +75,7 @@ export default function RecentWorks() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-start">
           {/* Stack */}
           <div className="lg:col-span-7">
             <div
@@ -93,9 +93,9 @@ export default function RecentWorks() {
                       diff === 0 ? cycleToBack() : bringToFront(idx)
                     }
                     animate={{
-                      y: diff * 35,
-                      scale: 1 - diff * 0.05,
-                      rotateX: diff * 2,
+                      y: diff * 24,
+                      scale: 1 - diff * 0.04,
+                      rotateX: diff * 1.5,
                       zIndex: projects.length - diff,
                     }}
                     transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
@@ -150,10 +150,10 @@ export default function RecentWorks() {
                 <h3 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-white mt-3 mb-4 sm:mb-5">
                   {active.title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed mb-6">
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-5 sm:mb-6">
                   {active.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="flex flex-wrap gap-2 mb-6 sm:mb-8">
                   {active.tags.map((tag) => (
                     <span
                       key={tag}

@@ -73,7 +73,7 @@ export default function About() {
           <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">
             My Toolkit
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 sm:gap-3">
             {skills.map((skill, i) => (
               <motion.span
                 key={skill}
@@ -81,7 +81,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
-                className="px-5 py-2.5 rounded-full border border-white/15 text-sm text-gray-300 hover:border-[#00df8f] hover:text-[#00df8f] hover:shadow-[0_0_15px_rgba(0,223,143,0.3)] transition-all duration-300 cursor-default"
+                className="px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full border border-white/15 text-xs sm:text-sm text-gray-300 hover:border-[#00df8f] hover:text-[#00df8f] hover:shadow-[0_0_15px_rgba(0,223,143,0.3)] transition-all duration-300 cursor-default"
               >
                 {skill}
               </motion.span>
