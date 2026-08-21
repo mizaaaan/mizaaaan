@@ -31,7 +31,7 @@ export default function Footer() {
           >
             <h2 className="font-display font-bold tracking-tighter text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-5 sm:mb-6 leading-[0.95]">
               HOW CAN I HELP?
-            </h2>              <p className="text-gray-400 leading-relaxed max-w-md mb-8 sm:mb-10">
+            </h2>              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-md mb-6 sm:mb-8 md:mb-10">
               Have a project in mind, or just want to talk design? My inbox
               is always open — I read every message myself.
             </p>
@@ -39,7 +39,7 @@ export default function Footer() {
               href="mailto:hello@mizan.design"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 pl-5 sm:pl-6 pr-2 py-2 rounded-full bg-white text-[#0d1116] font-semibold text-xs sm:text-sm break-all sm:break-normal"
+              className="inline-flex items-center gap-2 pl-4 sm:pl-6 pr-2 py-2 rounded-full bg-white text-[#0d1116] font-semibold text-xs sm:text-sm break-words sm:break-normal"
             >
               hello@mizan.design
               <span className="w-8 h-8 rounded-full bg-[#0d1116] flex items-center justify-center flex-shrink-0">

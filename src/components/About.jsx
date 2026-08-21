@@ -29,7 +29,7 @@ export default function About() {
             DESIGNING WITH PURPOSE.
           </h2>
 
-          <div className="space-y-5 text-gray-400 leading-relaxed max-w-lg">
+          <div className="space-y-4 sm:space-y-5 text-sm sm:text-base text-gray-400 leading-relaxed max-w-lg">
             <p>
               I'm Mizan, a designer and builder who moves fluidly between
               product strategy, interface craft, and the code that brings it

@@ -57,7 +57,7 @@ export default function RecentWorks() {
   return (
     <section id="work" className="py-20 sm:py-24 md:py-32 relative">
       <div className="max-w-7xl mx-auto px-5 sm:px-10">
-        <div className="flex items-center justify-between mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0 mb-10 sm:mb-16">
           <div>
             <span className="text-sm font-semibold text-[#00df8f] uppercase tracking-widest">
               Selected Work
@@ -68,7 +68,7 @@ export default function RecentWorks() {
           </div>
           <button
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
-            className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-sm font-semibold text-gray-300 uppercase tracking-widest hover:border-[#00df8f] hover:text-[#00df8f] transition-colors duration-300"
+            className="self-start flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/15 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-widest hover:border-[#00df8f] hover:text-[#00df8f] transition-colors duration-300"
           >
             View All Projects
             <ArrowUpRight size={16} />
@@ -99,7 +99,7 @@ export default function RecentWorks() {
                       zIndex: projects.length - diff,
                     }}
                     transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-                    className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 cursor-pointer shadow-2xl"
+                    className="absolute inset-0 rounded-2xl sm:rounded-3xl overflow-hidden border border-white/10 cursor-pointer shadow-2xl"
                     style={{ transformOrigin: 'top center' }}
                   >
                     <img
